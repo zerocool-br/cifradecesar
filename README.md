@@ -6,8 +6,11 @@ Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de 
 INSTRUÇÕES DE USO:
 
 1- Insira a chave(numeros de 0 a 22)
+
 2- Insira palavra por palavra(apenas letras MAIUSCULAS e sem caractere especial), depois precione ENTER
+
 3- Ao terminar de inserar todas as palavras, pressione CTRL+C para encerrar o programa
+
 4- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa
 
 
