@@ -1,5 +1,5 @@
 # cifradecesar
-A cifra de césar é uma das mais antigas criptografiaS conhecidas, sido utilizada por Júlio César, que viveu nos anos de 100 a.C a 44 d.C. Hoje, é considerada um tipo de criptografia muito ultrapassada e fácil de ser quebrada.
+A cifra de césar é uma das mais antigas criptografias conhecidas, sido utilizada por Júlio César, que viveu nos anos de 100 a.C a 44 d.C. Hoje, é considerada um tipo de criptografia muito ultrapassada e fácil de ser quebrada.
 
 Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de aprendizado para quem está começando tanto na área de Programção como de Segurança. O arquivo Tutorial01.pdf é um guia que propõe um desafio envolvendo a Cifra de César.
 
