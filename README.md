@@ -18,16 +18,17 @@ Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de 
 
 # FUNÇÕES CRIADAS:
 
-
+```markdown
 Função: CifraDeCesar("Palavra a ser criptografada", "Chave (-22 a 22)")
 
 Descrição: Cripotgrafa uma palvra utilizando a Cifra de César. Ela só funciona com com numeros e letras sem caracteres especiais, respeitando a tabela ASCII.
+```
 
+```markdown
 Função: main()
 
 Descrição: É a função principal do algoritimo, como sugere o nome. Ela faz a coleta das palavras a serem criptografadas e chave, e gera um arquivo .txt com o texto criptografado.
-
-
+```
 
 # BIBLIOTECAS UTILIZADAS:
 
