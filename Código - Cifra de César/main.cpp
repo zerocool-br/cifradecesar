@@ -2,29 +2,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-char a = 'A', z = 'Z';
 
-//Cifra de César
+
+//Cifra de CÃ©sar
+char zero = '0', nove = '9', a = 'a', A = 'A', z = 'z', Z = 'Z';
 char* CifraDeCesar(const char* texto, int chave)
 {
 	int tamanho = strlen(texto);
-	char* nTexto = new char[tamanho + 1];
+	unsigned char* nTexto = new unsigned char[tamanho + 1];
 	for (int i = 0; i < tamanho; i++) {
 		nTexto[i] = texto[i] + chave;
-		/*Apenas Letras*/
-		if (nTexto[i] > z)
-			nTexto[i] = a + (nTexto[i] - z) - 1;
-		else if(nTexto[i] < a)
-			nTexto[i] = z - (a - nTexto[i]) + 1;
+		if (texto[i] >= zero && texto[i] <= nove) //nÃºmero
+		{
+			if (nTexto[i] > nove)
+				nTexto[i] = zero + (nTexto[i] - nove) - 1;
+			else if (nTexto[i] < zero)
+				nTexto[i] = nove - (zero - nTexto[i]) + 1;
+		}
+		else if (texto[i] >= a && texto[i] <= z) //minusculo
+		{
+			if (nTexto[i] > z)
+				nTexto[i] = a + (nTexto[i] - z) - 1;
+			else if (nTexto[i] < a)
+				nTexto[i] = z - (a - nTexto[i]) + 1;
+		}
+		else if (texto[i] >= A && texto[i] <= Z) //maiusculo
+		{
+			if (nTexto[i] > Z)
+				nTexto[i] = A + (nTexto[i] - Z) - 1;
+			else if (nTexto[i] < A)
+				nTexto[i] = Z - (A - nTexto[i]) + 1;
+		}
+		else
+			nTexto[i] = texto[i];
 	}
 	nTexto[tamanho] = 0;
-	return nTexto;
+	return (char*)nTexto;
 }
 
-//Função Principal
+//FunÃ§Ã£o Principal
 int main()
 {
-	//ctrl + c event
 	int chave = -1;
 	char palavra[50];
 	FILE* arquivo;
@@ -33,17 +51,17 @@ int main()
 	printf("\
 Criptografia - Cifra de Cesar \n\n\
 Como utilizar: \n\
-1- Insira a chave(numeros de 0 a 22) \n\
-2- Insira palavra por palavra(apenas letras MAIUSCULAS e sem caractere especial), depois precione ENTER\n\
+1- Insira a chave(numeros de -22 a 22) \n\
+2- Insira palavra por palavra(caracteres especiais serÃ£o desconsiderados), depois precione ENTER\n\
 3- Ao terminar de inserar todas as palavras, pressione CTRL+C para encerrar o programa\n\
-4- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa\n");
+4- A mensagem criptografada serÃ¡ gravada em um arquivo cifra.txt no diretÃ³rio do programa\n");
 
 	do
 	{
 		printf("Insira a chave: ");
 		scanf("%d", &chave);
 
-		if (chave < 0 || chave > 22) {
+		if ( chave < -22 || chave > 22) {
 			printf("Chave invalida. Tente novamente\n");
 			continue;
 		}
