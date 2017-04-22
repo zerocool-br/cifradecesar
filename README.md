@@ -4,7 +4,7 @@ A cifra de césar é uma das mais antigas criptografias conhecidas, sido utiliza
 Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de aprendizado para quem está começando tanto na área de Programção como de Segurança. O arquivo Tutorial01.pdf é um guia que propõe um desafio envolvendo a Cifra de César. Caso queira se aventurar, baixe e siga as instruções contidas no arquivo "Tutorial 01 - Criptografia [Computação].pdf" neste diretório.
 
 
-INSTRUÇÕES DE USO:
+# INSTRUÇÕES DE USO:
 
 
 1- Insira a chave(numeros de -22 a 22)
@@ -16,7 +16,7 @@ INSTRUÇÕES DE USO:
 4- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa
 
 
-FUNÇÕES CRIADAS:
+# FUNÇÕES CRIADAS:
 
 
 Função: CifraDeCesar("Palavra a ser criptografada", "Chave (-22 a 22)")
@@ -29,7 +29,7 @@ Descrição: É a função principal do algoritimo, como sugere o nome. Ela faz 
 
 
 
-BIBLIOTECAS UTILIZADAS:
+# BIBLIOTECAS UTILIZADAS:
 
 
 Biblioteca: stdio.h
