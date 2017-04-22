@@ -7,13 +7,13 @@ Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de 
 # INSTRUÇÕES DE USO:
 
 
-1- Insira a chave(numeros de -22 a 22)
+-	Insira a chave(numeros de -22 a 22)
 
-2- Insira palavra por palavra(caracteres especiais serão desconsiderados), depois precione ENTER
+-	Insira palavra por palavra(caracteres especiais serão desconsiderados), depois precione ENTER
 
-3- Ao terminar de inserar todas as palavras, pressione CTRL+C para encerrar o programa
+- Ao terminar de inserar todas as palavras, pressione CTRL+C para encerrar o programa
 
-4- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa
+- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa
 
 
 # FUNÇÕES CRIADAS:
