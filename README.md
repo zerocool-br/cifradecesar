@@ -32,15 +32,18 @@ Descrição: É a função principal do algoritimo, como sugere o nome. Ela faz 
 
 # BIBLIOTECAS UTILIZADAS:
 
-
+```markdown
 Biblioteca: stdio.h
 
 Funções: printf, scanf, fopen, fprintf, fclose
-
+```
+```markdown
 Biblioteca: stdlib.h
 
 Funções: system
-
+```
+```markdown
 Biblioteca: string.h
 
 Funções: strlen
+```
