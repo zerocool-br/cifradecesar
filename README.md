@@ -7,9 +7,9 @@ Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de 
 INSTRUÇÕES DE USO:
 
 
-1- Insira a chave(numeros de 0 a 22)
+1- Insira a chave(numeros de -22 a 22)
 
-2- Insira palavra por palavra(apenas letras MAIUSCULAS e sem caractere especial), depois precione ENTER
+2- Insira palavra por palavra(caracteres especiais serão desconsiderados), depois precione ENTER
 
 3- Ao terminar de inserar todas as palavras, pressione CTRL+C para encerrar o programa
 
@@ -19,9 +19,9 @@ INSTRUÇÕES DE USO:
 FUNÇÕES CRIADAS:
 
 
-Função: CifraDeCesar("Palavra a ser criptografada", "Chave (0 a 22)")
+Função: CifraDeCesar("Palavra a ser criptografada", "Chave (-22 a 22)")
 
-Descrição: Cripotgrafa uma palvra utilizando a Cifra de César. Ela só funciona com letras MAIUSCULAS e sem caractere especial
+Descrição: Cripotgrafa uma palvra utilizando a Cifra de César. Ela só funciona com com numeros e letras sem caracteres especiais, respeitando a tabela ASCII.
 
 Função: main()
 
