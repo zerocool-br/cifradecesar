@@ -19,15 +19,39 @@ Por utilziar um algoritmo muito simples, pode ser utilizada como instrumento de 
 # FUNÇÕES CRIADAS:
 
 ```markdown
+Função: VerificaTipo("Caractere")
+
+Descrição: Verifica se o caractere é um número, letra minúscula, letra maiúscila ou caractere especial.
+```
+
+```markdown
+Função: Cifrar("Caractere", "Chave (-22 a 22)")
+
+Descrição: Cifra o caractere utilizando a cifra de César. Apenas funciona com com numeros e letras sem caracteres especiais, respeitando a tabela ASCII.
+```
+
+```markdown
 Função: CifraDeCesar("Palavra a ser criptografada", "Chave (-22 a 22)")
 
-Descrição: Cripotgrafa uma palvra utilizando a Cifra de César. Ela só funciona com com numeros e letras sem caracteres especiais, respeitando a tabela ASCII.
+Descrição: Chama a função "Cifrar" várias vezes, criptografando uma palavra.
+```
+
+```markdown
+Função: ColetaChave("Chave (-22 a 22)")
+
+Descrição: Coleta a chave inserida pelo usuário.
+```
+
+```markdown
+Função: Criptografa("Arquivo", "Chave (-22 a 22)")
+
+Descrição: Coleta a palavra a ser criptografada, dps criptografa, imprime e a grava em um arquivo.  
 ```
 
 ```markdown
 Função: main()
 
-Descrição: É a função principal do algoritimo, como sugere o nome. Ela faz a coleta das palavras a serem criptografadas e chave, e gera um arquivo .txt com o texto criptografado.
+Descrição: Como o nome sugere, é a função principal. Ela é a primeira a ser chamada quando se inicia o algoritimo, e é responsável por chamar todas as outras funções.
 ```
 
 # BIBLIOTECAS UTILIZADAS:
