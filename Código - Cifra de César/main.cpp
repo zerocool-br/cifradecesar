@@ -3,39 +3,61 @@
 #include <stdlib.h>
 #include <string.h>
 
-
-//Cifra de César
+enum tipo { especial = -1, numero = 0, minusculo = 1, maiusculo = 2};
 char zero = '0', nove = '9', a = 'a', A = 'A', z = 'z', Z = 'Z';
+
+int VerificaTipo(unsigned char caractere)
+{
+	if (caractere >= zero && caractere <= nove)
+		return tipo::numero;
+	else if (caractere >= a && caractere <= z)
+		return tipo::minusculo;
+	else if (caractere >= A && caractere <= Z)
+		return tipo::maiusculo;
+	
+	return tipo::especial;
+}
+
+void Cifrar(unsigned char* caractere, int chave)
+{
+	int delta = chave;
+	switch (VerificaTipo(*caractere))
+	{
+	case 0:
+		while (*caractere + delta > nove)
+			delta = zero + delta - nove - 1;
+
+		while (*caractere + delta < zero)
+			delta = nove + delta - zero + 1;
+		break;
+	case 1:
+		while (*caractere + delta > z)
+			delta = a + delta - z - 1;
+
+		while (*caractere + delta < a)
+			delta = z + delta - a + 1;
+		break;
+	case 2:
+		while (*caractere + delta > Z)
+			delta = A + delta - Z - 1;
+
+		while (*caractere + delta < A)
+			delta = Z + delta - A + 1;
+		break;
+	default:
+		delta = 0;
+		break;
+	}
+	*caractere = *caractere + delta;
+}
+
 char* CifraDeCesar(const char* texto, int chave)
 {
 	int tamanho = strlen(texto);
 	unsigned char* nTexto = new unsigned char[tamanho + 1];
-	for (int i = 0; i < tamanho; i++) {
-		nTexto[i] = texto[i] + chave;
-		if (texto[i] >= zero && texto[i] <= nove) //número
-		{
-			if (nTexto[i] > nove)
-				nTexto[i] = zero + (nTexto[i] - nove) - 1;
-			else if (nTexto[i] < zero)
-				nTexto[i] = nove - (zero - nTexto[i]) + 1;
-		}
-		else if (texto[i] >= a && texto[i] <= z) //minusculo
-		{
-			if (nTexto[i] > z)
-				nTexto[i] = a + (nTexto[i] - z) - 1;
-			else if (nTexto[i] < a)
-				nTexto[i] = z - (a - nTexto[i]) + 1;
-		}
-		else if (texto[i] >= A && texto[i] <= Z) //maiusculo
-		{
-			if (nTexto[i] > Z)
-				nTexto[i] = A + (nTexto[i] - Z) - 1;
-			else if (nTexto[i] < A)
-				nTexto[i] = Z - (A - nTexto[i]) + 1;
-		}
-		else
-			nTexto[i] = texto[i];
-	}
+	*nTexto = *texto;
+	for (int i = 0; i < tamanho; i++)
+		Cifrar(&nTexto[i], chave);
 	nTexto[tamanho] = 0;
 	return (char*)nTexto;
 }
@@ -61,13 +83,13 @@ Como utilizar: \n\
 		printf("Insira a chave: ");
 		scanf("%d", &chave);
 
-		if ( chave < -22 || chave > 22) {
+		if (chave < -22 || chave > 22) {
 			printf("Chave invalida. Tente novamente\n");
 			continue;
 		}
 		break;
 	} while (1);
-	
+
 
 	while (1)
 	{
