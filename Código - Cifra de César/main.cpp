@@ -3,7 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
-enum tipo { especial = -1, numero = 0, minusculo = 1, maiusculo = 2};
+// Defines
+#define CHAVE_MIN		-22
+#define CHAVE_MAX		22
+
+// Variáveis globais
+enum tipo { numero = 0, minusculo = 1, maiusculo = 2 };
 char zero = '0', nove = '9', a = 'a', A = 'A', z = 'z', Z = 'Z';
 
 int VerificaTipo(unsigned char caractere)
@@ -14,8 +19,8 @@ int VerificaTipo(unsigned char caractere)
 		return tipo::minusculo;
 	else if (caractere >= A && caractere <= Z)
 		return tipo::maiusculo;
-	
-	return tipo::especial;
+
+	return -1; // caractere especial
 }
 
 void Cifrar(unsigned char* caractere, int chave)
@@ -55,50 +60,64 @@ char* CifraDeCesar(const char* texto, int chave)
 {
 	int tamanho = strlen(texto);
 	unsigned char* nTexto = new unsigned char[tamanho + 1];
-	*nTexto = *texto;
 	for (int i = 0; i < tamanho; i++)
-		Cifrar(&nTexto[i], chave);
+	{
+		unsigned char caractere = texto[i];
+		Cifrar(&caractere, chave);
+		nTexto[i] = caractere;
+	}
 	nTexto[tamanho] = 0;
 	return (char*)nTexto;
+}
+
+
+void ColetaChave(int &chave)
+{
+	do
+	{
+		printf("Insira a chave: ");
+		scanf("%d", &chave);
+
+		if (chave < CHAVE_MIN || chave > CHAVE_MAX) {
+			printf("Chave invalida. Tente novamente\n");
+			continue;
+		}
+		break;
+	} while (1);
+}
+
+void Criptografa(const char* cArquivo, int chave)
+{
+	char palavra[50];
+	FILE* arquivo;
+
+	arquivo = fopen(cArquivo, "a");;
+	printf("Insira a palavra: ");
+	scanf("%s", palavra);
+	printf("Criptografada: %s\n", CifraDeCesar(palavra, chave));
+	fprintf(arquivo, " %s ", CifraDeCesar(palavra, chave));
+	fclose(arquivo);
 }
 
 //Função Principal
 int main()
 {
 	int chave = -1;
-	char palavra[50];
-	FILE* arquivo;
 
 	system("color fc"); // mudar cor do cmd
 	printf("\
 Criptografia - Cifra de Cesar \n\n\
 Como utilizar: \n\
-1- Insira a chave(numeros de -22 a 22) \n\
+1- Insira a chave(numeros de %d a %d) \n\
 2- Insira palavra por palavra(caracteres especiais serão desconsiderados), depois precione ENTER\n\
 3- Ao terminar de inserar todas as palavras, pressione CTRL+C para encerrar o programa\n\
-4- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa\n");
+4- A mensagem criptografada será gravada em um arquivo cifra.txt no diretório do programa\n",
+CHAVE_MIN, CHAVE_MAX);
 
-	do
-	{
-		printf("Insira a chave: ");
-		scanf("%d", &chave);
+	ColetaChave(chave);
 
-		if (chave < -22 || chave > 22) {
-			printf("Chave invalida. Tente novamente\n");
-			continue;
-		}
-		break;
-	} while (1);
+	while (1)	
+		Criptografa("cifra.txt", chave);
 
-
-	while (1)
-	{
-		arquivo = fopen("cifra.txt", "a");;
-		printf("Insira a palavra: ");
-		scanf("%s", palavra);
-		printf("Criptografada: %s\n", CifraDeCesar(palavra, chave));
-		fprintf(arquivo, " %s ", CifraDeCesar(palavra, chave));
-		fclose(arquivo);
-	}
 	return 0;
 }
