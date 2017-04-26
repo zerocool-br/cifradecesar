@@ -8,17 +8,21 @@
 #define CHAVE_MAX		22
 
 // Variáveis globais
-enum tipo { numero = 0, minusculo = 1, maiusculo = 2 };
+enum tipo {
+    numero = 0,
+    minusculo = 1,
+    maiusculo = 2
+    };
 char zero = '0', nove = '9', a = 'a', A = 'A', z = 'z', Z = 'Z';
 
 int VerificaTipo(unsigned char caractere)
 {
 	if (caractere >= zero && caractere <= nove)
-		return tipo::numero;
+		return numero;
 	else if (caractere >= a && caractere <= z)
-		return tipo::minusculo;
+		return minusculo;
 	else if (caractere >= A && caractere <= Z)
-		return tipo::maiusculo;
+		return maiusculo;
 
 	return -1; // caractere especial
 }
@@ -28,21 +32,21 @@ void Cifrar(unsigned char* caractere, int chave)
 	int delta = chave;
 	switch (VerificaTipo(*caractere))
 	{
-	case 0:
+	case numero:
 		while (*caractere + delta > nove)
 			delta = zero + delta - nove - 1;
 
 		while (*caractere + delta < zero)
 			delta = nove + delta - zero + 1;
 		break;
-	case 1:
+	case minusculo:
 		while (*caractere + delta > z)
 			delta = a + delta - z - 1;
 
 		while (*caractere + delta < a)
 			delta = z + delta - a + 1;
 		break;
-	case 2:
+	case maiusculo:
 		while (*caractere + delta > Z)
 			delta = A + delta - Z - 1;
 
@@ -116,7 +120,7 @@ CHAVE_MIN, CHAVE_MAX);
 
 	ColetaChave(chave);
 
-	while (1)	
+	while (1)
 		Criptografa("cifra.txt", chave);
 
 	return 0;
