@@ -12,7 +12,7 @@ enum tipo {
     numero = 0,
     minusculo = 1,
     maiusculo = 2
-    };
+};
 char zero = '0', nove = '9', a = 'a', A = 'A', z = 'z', Z = 'Z';
 
 int VerificaTipo(unsigned char caractere)
